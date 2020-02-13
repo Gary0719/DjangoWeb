@@ -1,0 +1,23 @@
+$(function(){
+    $("#sure").click(function(){
+        $.ajax({
+            url:'/user/weibo/users',
+            type:'post',
+            dataType:'json',
+            data:JSON.stringify({
+                'username':$("#username").val(),
+                'password':$("#passwd").val(),
+                'wuid':localStorage.getItem('weibo_uid'),
+            }),
+            success:function(res){
+                if(res.code==200){
+                    alert('账号绑定成功!')
+                    window.localStorage.clear();
+                    localStorage.setItem('community_user',res.data.username);
+                    localStorage.setItem('community_token',res.data.token);
+                    location.href='/index/';
+                }
+            }
+        })
+    })
+})

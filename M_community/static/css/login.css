@@ -1,0 +1,29 @@
+#main{
+    width: 450px;
+    height: 360px;
+}
+#sure{
+    bottom: 115px;
+
+}
+#weibo{
+    position: absolute;
+    left: 205px;
+    bottom: 40px;
+    
+}
+#weibo img{
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+#weibo span{
+    position: absolute;
+    display: inline-block;
+    bottom:-15px;
+    width: 150px;
+    text-align: center;
+    left: -55px;
+    color: #666;
+
+}

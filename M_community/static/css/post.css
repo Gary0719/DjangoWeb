@@ -1,0 +1,132 @@
+/* 全局样式 */
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'YouYuan';
+    background-color: #f1f3f4;
+}
+ul,li,p,h1,h2,h3{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+}
+a,a:hover{
+    text-decoration: none;
+
+}
+input{
+    border: none;
+    outline: none;
+}
+.clear{
+    clear: both;
+}
+
+/* 头部样式 */
+header{
+    width: 1050px;
+    height: 152px;
+    margin: 0 auto;
+    position: relative;
+}
+header #logo{
+    position: absolute;
+    top: 30px;
+}
+header #logo img{
+    width: 160px;
+    height: 90px;
+}
+header span{
+    text-align: center;
+    line-height: 40px;
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    left: 450px;
+    top: 55px;
+    font-size: 23px;
+    font-weight: 800;
+    display: inline-block;
+}
+#main{
+    width: 1050px;
+    height: 600px;
+    margin: 0 auto;
+    border: 1px solid #666;
+    border-radius: 10px;
+    position: relative;
+    padding-top: 20px;
+    margin-bottom: 50px;
+    /* background-color: rgba(0, 0, 0, 0.3); */
+}
+#main #title{
+    width: 1050px;
+    height: 120px;
+}
+#main .myessay{
+    position: absolute;
+    left: 60px;
+}
+#main #title #essayTitle{
+    width: 355px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 18px;
+    padding-left: 5px;
+    font-weight: 600;
+    line-height: 40px;
+}
+#main #title #classify{
+    width: 100px;
+    height: 25px;
+    border:none;
+    outline: none;
+    background-color: #fff;
+    top: 90px;
+    font-size: 15px;
+    color: #242424;
+}
+
+#content #show{
+    width: 320px;
+    height: 240px;
+    border: 1px solid #666;
+    position: absolute;
+    right: 60px;
+    top: 265px;
+    border-radius: 5px;
+    border: none;
+    display: none;
+}
+#content #essayPicture{
+    width: 72px;
+    top: 160px;
+
+}
+#content #content_text{
+    bottom: 100px;
+    font-size: 15px;
+    border: 1px solid #666;
+    outline: none;
+    border-radius: 5px;
+}
+#main #send{
+    width: 90px;
+    height: 27px;
+    position: absolute;
+    left: 250px;
+    bottom: 20px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #4080e2;
+    cursor: pointer;
+}
+#main #send:active{
+    background-color: #4060e2
+}

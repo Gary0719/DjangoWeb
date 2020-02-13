@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>好友列表</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/myfriends.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="/index/"><img src="/static/image/logo.png" alt=""></a> 
+        </div>
+        <img src="" id="head" class="hide">
+        <div id="tools">
+            <div>
+                <a href="/user/register">注册</a> | 
+                <a href="/user/login">登录</a>
+            </div>
+            <div class="hide">
+                <a href="/user/upload"></a> | 
+                <a href="">退出</a>
+            </div>
+        </div>
+    </header>
+    <div id="main">
+        {% for item in data %}
+        <div class="one_friend">
+            <div class="head">
+                <img src="{{ item.head }}" alt="">
+            </div>
+            {% if item.gender == '0' %}
+            <span class="gender">女生</span>
+            {% elif item.gender == '1' %}
+            <span class="gender">男生</span>
+            {% endif %}
+            <span class="name">{{ item.username }}</span>
+            <button class="chat">私聊</button>
+            <!-- <button class="note">修改备注</button> -->
+        </div>
+        {% endfor %}
+    </div>
+    <footer></footer>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/myfriends.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+#main{
+    width: 450px;
+    height: 450px;
+    /* border: 1px solid #666; */
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    position: relative;
+}
+#main #find{
+    width: 300px;
+    /* border: 1px solid #666; */
+    position: absolute;
+    left: 75px;
+    top: 30px;
+}
+#main #find #friend_name{
+    width: 210px;
+    height: 30px;
+    outline: none;
+    margin: 5px;
+    padding-left: 5px;
+    border-radius: 5px;
+}
+#main #find #search{
+    border: none;
+    outline: none;
+    width: 70px;
+    height: 30px;
+    color: #fff;
+    background-color:#4080e2;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#main #find #search:active{
+    background-color: #4060e2;
+}
+#main #tip{
+    width: 210px;
+    height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    top: 80px;
+    left: 120px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    
+}
+.hiden{
+    display: none;
+}

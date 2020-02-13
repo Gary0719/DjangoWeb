@@ -1,0 +1,244 @@
+/* 全局样式 */
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'YouYuan';
+    background-color: #f1f3f4;
+}
+ul,li,p,h1,h2,h3{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+}
+a,a:hover{
+    text-decoration: none;
+
+}
+input{
+    border: none;
+    outline: none;
+}
+.clear{
+    clear: both;
+}
+
+
+/* 头部样式 */
+header{
+    width: 1050px;
+    height: 190px;
+    margin: 0 auto;
+    position: relative;
+}
+/* logo样式 */
+header #logo{
+    width: 160px;
+    height: 90px;
+    position: absolute;
+    top: 30px;
+}
+header #logo img{
+    width: 160px;
+    height: 90px;
+}
+/* 导航栏样式 */
+header #navigation{
+    position: absolute;
+    bottom: 10px;
+    width: 1050px;
+    background-color: #242424;
+    border-radius: 3px;
+}
+header #navigation .sort{
+    width: 90px;
+    height: 25px;
+    float: left;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    line-height: 25px;
+}
+/* 工具栏样式 */
+header #tools{
+    position: absolute;
+    right: 25px;
+    top: 95px;
+
+}
+
+header #tools a{
+    color: #666;
+    font-size: 14px;
+}
+header #tools .hide{
+    display: none;
+}
+
+
+/* 主体样式 */
+.custom_link{
+    color: #fff;
+    cursor: pointer;
+}
+
+#slide{
+    width: 1050px;
+    height: 360px;
+    position: relative;
+    border:1px solid #666;
+    border-radius: 5px;
+    margin: 0 auto;
+
+}
+#slide #user{
+    width: 90px;
+    height: 160px;
+    border: 1px solid #666;
+    margin-left:20px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    position: absolute;
+    top: 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+#user .hide{
+    display: none;
+}
+#slide #user .myDomain{
+    width: 80px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;   
+}
+#slide #user  a{
+    color: #fff;
+}
+#user #myEssay{
+    position: absolute;
+    left: 125px;
+    top:15px;
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    
+}
+#user #myEssay div{
+    width: 75px;
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+}
+#user #myChat{
+    position: absolute;
+    left: 125px;
+    top:70px;
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#user #myChat div{
+    width: 75px;
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+}
+#user #myLike{
+    position: absolute;
+    left: 125px;
+    top:120px;
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+#user #myLike div{
+    width: 75px;
+    height: 35px;
+    text-align: center;
+    line-height: 30px;
+}
+#back_img .slide_img{
+    width: 1050px;
+    height: 360px;
+    position: relative;
+    /* transition: all 1s; */
+}
+#back_img .the_hide{
+    display: none;
+}
+
+/* 主体样式 */
+#main #content{
+    width: 1050px;
+    height: 1250px;
+    margin: 0 auto;
+    border: 1px solid #666;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+#main #content a{
+    color: #242424;
+}
+#content .essay_show{
+    position: relative;
+    width: 503px;
+    height: 200px;
+    margin: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    float: left;
+}
+#content .essay_show #essay_title{
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+    top: 5px;
+    left: 20px;
+}
+#content .essay_show #essay_classify{
+    position: absolute;
+    font-size: 16px;
+    right: 20px;
+    bottom: 36px;
+}
+#content .essay_show #essay_author{
+    position: absolute;
+    font-weight: 600;
+    font-size: 18px;
+    right: 20px;
+    bottom: 5px;
+}
+#content .essay_show #essay_content{
+    position: absolute;
+    width: 190px;
+    height: 80px;
+    font-size: 16px;
+    color:#242424; 
+    right: 20px;
+    top: 52px;
+}
+#content .essay_show #essay_image{
+    position: absolute;
+    width: 200px;
+    top: 40px;
+    left: 12px;
+    border-radius: 5px;
+}
+#content .essay_show #essay_clickrate{
+    position: absolute;
+    font-weight: 600;
+    font-size: 17px;
+    right: 150px;
+    bottom: 5px;
+    width: 60px;
+    text-align: center;
+
+}

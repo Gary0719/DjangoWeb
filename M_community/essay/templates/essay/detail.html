@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情</title>
+    <link rel="stylesheet" href="/static/css/detail.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="/index/"><img src="/static/image/logo.png" alt=""></a> 
+        </div>
+    </header>
+    <div id="main">
+        <div id="title">
+            {{ essay.title }}
+        </div>
+        <div id="essay_id" style="display: none">{{ essay.id }}</div>
+        {% if essay.classify == '0' %}
+        <div id="essay_classify">分类:音乐</div>
+        {% elif essay.classify == '1' %}
+        <div id="essay_classify">分类:电影</div>
+        {% elif essay.classify == '2' %}
+        <div id="essay_classify">分类:电视剧</div>
+        {% elif essay.classify == '3' %}
+        <div id="essay_classify">分类:宠物</div>
+        {% elif essay.classify == '4' %}
+        <div id="essay_classify">分类:游戏</div>
+        {% elif essay.classify == '5' %}
+        <div id="essay_classify">分类:文学</div>
+        {% elif essay.classify == '6' %}
+        <div id="essay_classify">分类:旅游</div>
+        {% endif %}
+        <div id="main_box">
+            <div id="content">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ essay.content }}
+            </div>
+            <div id="picture">
+                <img src="{{ essay.image }}" alt="">
+            </div>
+        </div>
+        <div id="author">
+            作者:{{ user.username }}
+        </div>
+        <div id="comment">
+            <div id="tips">评论区:</div>
+            <div id="comment_show">
+                {% for comment in comments %}
+                <div class="other_comment">{{ comment.observer.username }} : {{ comment.comment }}</div>
+                {% endfor %}
+                <div id="user_input">
+                    <input type="text" name="my_comment" id="my_comment" maxlength="18" placeholder="请输入18个字符以内的评论">
+                    <button id="comment_btn">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/detail.js"></script>
+</body>
+</html>

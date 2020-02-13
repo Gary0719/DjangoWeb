@@ -1,0 +1,96 @@
+header #title{
+    width: 450px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    position: absolute;
+    left: 300px;
+    top: 56px;
+    font-size: 24px;
+    font-weight: 900;
+
+}
+#main{
+    width: 1050px;
+    margin: 0 auto;
+    /* border: 1px solid #666; */
+    padding-bottom: 20px;
+}
+#main #one_friend{
+    width: 1000px;
+    height: 150px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+#main #one_friend #head_picture{
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+#main #one_friend #head_picture img{
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+#main #one_friend #friend_name{
+    display: inline-block;
+    position: absolute;
+    left: 160px;
+    top: 20px;
+    font-size: 20px;
+    font-weight: 900;
+    color: #4080e2;
+}
+#main #one_friend #friend_gender{
+    display: inline-block;
+    position: absolute;
+    left: 160px;
+    top: 45px;
+    font-size: 16px;
+    color: #666;
+}
+#main #one_friend #op{
+    position: absolute;
+    right: 25px;
+    top: 50px;
+}
+#main #one_friend #op button{
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+    margin-left: 20px;
+    color: #fff;
+}
+#main #one_friend #op .agree{
+    background-color: #2ec47c;
+
+}
+#main #one_friend #op .agree:active{
+    background-color: #2eb47c
+}
+#main #one_friend #op .ignore{
+    background-color: #c20c0b;
+}
+#main #one_friend #op .ignore:active{
+    background-color: #a50707;
+}
+#no_friend{
+    width: 480px;
+    height: 270px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 270px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    background-image: url('/static/image/none.jpg');
+    background-size: cover;
+    opacity: 0.9;
+}

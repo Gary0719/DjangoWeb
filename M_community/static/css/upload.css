@@ -1,0 +1,64 @@
+#main{
+    width: 360px;
+    height: 480px;
+    border: 1px solid #666;
+    border-radius: 10px;
+    margin: 0 auto;
+    position: relative;
+    top: -10px;
+    margin-bottom: 25px;
+}
+/* 预览框样式 */
+#main #show{
+    width: 140px;
+    height:140px;
+    display: none;
+    position: absolute;
+    left: 110px;
+    top: 25px;
+    border-radius: 50%;
+
+}
+
+/* 上传文件框样式 */
+#main #upload{
+    position: absolute;
+    left: 145px;
+    bottom: 160px;
+}
+#main #upload #head_portrait{
+    width: 70px;
+}
+
+/* 提示框样式 */
+#main span{
+    text-align: center;
+    position: absolute;
+    left: 52px;
+    top: 340px;
+    display: block;
+    width: 255px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    border-radius: 3px;
+
+}
+
+/* 上传按钮样式 */
+#main #sure_btn{
+    position: absolute;
+    left: 130px;
+    bottom: 40px;
+}
+#main #sure_btn button{
+    width: 100px;
+    height: 30px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #2ec47c;
+}
+#main #sure_btn button:active{
+    background-color: #2eb47c;
+    
+}

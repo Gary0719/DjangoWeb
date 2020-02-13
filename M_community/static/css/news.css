@@ -1,0 +1,10 @@
+#main{
+    width: 1050px;
+    min-height: 300px;
+    /* border: 1px solid #666; */
+    margin: 0 auto;
+    position: relative;
+    top: -20px;
+    padding-bottom: 25px;
+
+}

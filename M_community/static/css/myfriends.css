@@ -1,0 +1,76 @@
+#main{
+    width: 1050px;
+    margin: 0 auto;
+    /* border: 1px solid #666; */
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+    position: relative;
+    top: -20px;
+}
+#main .one_friend{
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+    border: 1px solid #666;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+#main .one_friend:hover{
+    width: 1010px;
+    /* height: 100px; */
+    cursor: pointer;
+}
+#main .one_friend .head{
+    position: absolute;
+    left:10px;
+    top: 10px;
+    
+}
+#main .one_friend .head img{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+}
+#main .one_friend .gender{
+    position: absolute;
+    display: inline-block;
+    left: 120px;
+    top: 45px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+}
+#main .one_friend .name{
+    position: absolute;
+    display: inline-block;
+    left: 120px;
+    top: 15px;
+    font-size: 20px;
+    font-weight: 900;
+}
+#main .one_friend button{
+    width: 90px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: #fff;
+    position: absolute;
+    top: 35px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#main .one_friend button:active{
+    background-color: #4060e2
+}
+#main .one_friend .chat{
+    background-color: #4080e2;
+    right: 20px;
+}
+/* #main .one_friend .note{
+    background-color: #4080e2;
+    right: 120px;
+} */

@@ -1,0 +1,48 @@
+/* 全局样式 */
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'YouYuan';
+    background-color: #f1f3f4;
+}
+ul,li,p,h1,h2,h3{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+}
+a,a:hover{
+    text-decoration: none;
+
+}
+input{
+    border: none;
+    outline: none;
+}
+button{
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.clear{
+    clear: both;
+}
+header{
+    width: 1050px;
+    height: 190px;
+    margin: 0 auto;
+    position: relative;
+}
+/* logo样式 */
+header #logo{
+    width: 160px;
+    height: 90px;
+    position: absolute;
+    top: 30px;
+}
+header #logo img{
+    width: 160px;
+    height: 90px;
+}

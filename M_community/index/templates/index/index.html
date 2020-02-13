@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>社区首页</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="/index/"><img src="/static/image/logo.png" alt=""></a> 
+        </div>
+        <div id="search"></div>
+        <img src="" id="head" class="hide">
+        <div id="tools">
+            <div>
+                <a href="/user/register">注册</a> | 
+                <a href="/user/login">登录</a>
+            </div>
+            <div class="hide">
+                <a href="/user/upload"></a> | 
+                <a href="">退出</a>
+            </div>
+            
+        </div>
+        <div id="navigation">
+            <div class="sort">
+                <a href="">推荐</a>
+            </div>
+            <div class="sort">
+                <a href="">音乐</a>
+            </div>
+            <div class="sort">
+                <a href="#">电影</a>
+            </div>
+            <div class="sort">
+                <a href="#">电视剧</a>
+            </div>
+            <div class="sort">
+                <a href="#">宠物</a>
+            </div>
+            <div class="sort">
+                <a href="#">游戏</a>
+            </div>
+            <div class="sort">
+                <a href="#">阅读</a>
+            </div>
+            <div class="sort">
+                <a href="#">旅游</a>
+            </div>
+        </div>
+    </header>
+    <div id="main">
+        <div id="slide">
+            <div id="user">
+                <div class="myDomain custom_link">我的日记</div>
+                <div id="myEssay" class="hide">
+                    <div>
+                        <a href="/essay/post">发表日记</a>
+                    </div>
+                    <div>
+                        <a href="">所有日记</a>
+                    </div>
+                    <div>
+                        <a href="">删除日记</a>
+                    </div>
+                </div>
+                <div class="myDomain custom_link">我的留言</div>
+                <div id="myChat" class="hide">
+                    <div>
+                        <a href="/letter/news">新的留言</a>
+                    </div>
+                    <div id="newfriends" class="custom_link">
+                        新的好友
+                    </div>
+                    <div>
+                        <a href="/letter/friend">添加好友</a>
+                    </div>
+                    <div id="myfriends" class="custom_link">
+                        好友列表
+                    </div>
+                </div>
+                <div class="myDomain custom_link">我的收藏</div>
+                <div id="myLike" class="hide">
+                    <div>
+                        <a href="">进入收藏夹</a>
+                    </div>
+                    <div>
+                        <a href="">管理收藏夹</a>
+                    </div>
+                </div>
+            </div>
+            <div id="back_img">
+                <img src="/static/image/slide_1.jpg" class="slide_img" alt="">
+                <img src="/static/image/slide_2.jpg" class="slide_img the_hide" alt="">
+                <img src="/static/image/slide_3.jpg" class="slide_img the_hide" alt="">
+                <img src="/static/image/slide_4.jpg" class="slide_img the_hide" alt="">
+                <img src="/static/image/slide_5.jpg" class="slide_img the_hide" alt="">
+                <img src="/static/image/slide_6.jpg" class="slide_img the_hide" alt="">
+                <img src="/static/image/slide_7.jpg" class="slide_img the_hide" alt="">
+            </div>
+        </div>
+        <div id="content">
+            {% for pg in the_page %}
+                <a href="/essay/detail/{{ pg.author.username }}/{{ pg.id }}">
+                    <div class="essay_show">
+                        <!-- 展示内容1:标题 -->
+                        <div id="essay_title">{{ pg.title }}</div>
+                        <!-- 展示内容2:分类 -->
+                        {% if pg.classify == '0' %}
+                        <div id="essay_classify">分类:音乐</div>
+                        {% elif pg.classify == '1' %}
+                        <div id="essay_classify">分类:电影</div>
+                        {% elif pg.classify == '2' %}
+                        <div id="essay_classify">分类:电视剧</div>
+                        {% elif pg.classify == '3' %}
+                        <div id="essay_classify">分类:宠物</div>
+                        {% elif pg.classify == '4' %}
+                        <div id="essay_classify">分类:游戏</div>
+                        {% elif pg.classify == '5' %}
+                        <div id="essay_classify">分类:文学</div>
+                        {% elif pg.classify == '6' %}
+                        <div id="essay_classify">分类:旅游</div>
+                        {% endif %}
+                        <!-- 展示内容3:内容 -->
+                        <div id="essay_content">&nbsp;&nbsp;&nbsp;&nbsp;{{ pg.content|truncatechars:'30' }}</div>
+                        <!-- 展示内容4:作者 -->
+                        <div id="essay_author">{{ pg.author.username }}</div>
+                        <img src="{{ pg.image }}" id="essay_image" alt="">
+                        <!-- 展示内容4:热度 -->
+                        <div id="essay_clickrate">热度:{{ pg.click_rate }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>          
+    </div>
+    <footer></footer>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/index.js"></script>
+</body>
+</html>

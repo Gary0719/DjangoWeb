@@ -1,0 +1,130 @@
+/* 全局样式 */
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'YouYuan';
+    background-color: #f1f3f4;
+}
+ul,li,p,h1,h2,h3{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+}
+a,a:hover{
+    text-decoration: none;
+
+}
+input{
+    border: none;
+    outline: none;
+}
+.clear{
+    clear: both;
+}
+
+
+/* 页面内容样式 */
+#parent{
+    width: 750px;
+    margin: 0 auto;
+    /* border: 1px solid #000; */
+    padding-top: 25px;
+    padding-bottom: 40px;
+}
+
+/* logo样式 */
+#parent #logo{
+    width: 176px;
+    height: 99px;
+    margin: 0 auto;
+    margin-bottom:30px; 
+}
+#logo img{
+    width: 176px;
+    height: 99px;
+}
+
+/* 注册框主体样式 */
+#main{
+    width: 450px;
+    height: 480px;
+    border: 1px solid #000;
+    margin: 0 auto;
+    position: relative;
+    padding-top: 12px;
+    border-radius: 5px;
+}
+#main #title{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #242424;
+}
+#main .message{
+    width: 450px;
+    height: 65px;
+    line-height: 65px;
+    /* border: 1px solid #000; */
+    position: relative;
+}
+#main .message label{
+    position: absolute;
+    right: 350px;
+    font-size: 15px;
+    color: #484848;
+}
+#main .message input{
+    width: 180px;
+    height: 24px;
+    position: absolute;
+    right: 138px;
+    top:20px;
+    padding-left: 6px;
+}
+#main .message #gender{
+    width: 120px;
+    height: 24px;
+    position: absolute;
+    top:20px;
+    left:132px ;
+    background-color: #fff;
+    border: none;
+    outline: none;
+}
+#sure{
+    position: absolute;
+    width: 120px;
+    height: 30px;
+    background-color: #4080e2;
+    color: #fff;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    line-height: 30px;
+    left: 165px;
+    bottom: 25px;
+}
+#sure:active{
+    background-color: #4060e2
+}
+#main .message .tips{
+    width: 105px;
+    height: 16px;
+    border: 1px solid #242424;
+    position: absolute;
+    top:24px;
+    right: 20px;
+    font-size: 10px;
+    text-align: left;
+    line-height: 16px;
+    padding-left: 3px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    display: none;
+}

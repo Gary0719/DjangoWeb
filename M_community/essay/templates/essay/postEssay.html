@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发表日记</title>
+    <link rel="stylesheet" href="/static/css/post.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="/static/image/logo.png" alt="">
+        </div>
+        <span>发&nbsp;&nbsp;&nbsp;表&nbsp;&nbsp;&nbsp;随&nbsp;&nbsp;&nbsp;笔</span>
+    </header>
+    <div id="main">
+        <div id="title">
+            <input type="text" placeholder="为您的日记取一个好名字吧~" id="essayTitle" class="myessay">
+            <select name="classify" id="classify" class="myessay">
+                <option value="0">音 乐</option>
+                <option value="1">电 影</option>
+                <option value="2">电 视 剧</option>
+                <option value="3">宠 物</option>
+                <option value="4">游 戏</option>
+                <option value="5">文 学</option>
+                <option value="6">旅 游</option>
+            </select>
+        </div>
+        <div id="content">
+            <img src="" id="show">
+            <input type="file" accept="image/png,image/jpeg,image/jpg" name="essayPicture" id="essayPicture" class="myessay">
+            <textarea name="content_text" class="myessay" id="content_text" cols="60" rows="15"></textarea>
+        </div>
+        <button id="send">发表</button>
+    </div>
+    <footer></footer>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/post.js"></script>
+</body>
+</html>

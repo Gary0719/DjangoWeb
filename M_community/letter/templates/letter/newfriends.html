@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新的好友</title>
+    <link rel="stylesheet" href="/static/css/whole.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/newfriends.css">
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <a href="/index/"><img src="/static/image/logo.png" alt=""></a> 
+        </div>
+        <div id="title">
+            好友申请列表
+        </div>
+        <img src="" id="head" class="hide">
+        <div id="tools">
+            <div>
+                <a href="/user/register">注册</a> | 
+                <a href="/user/login">登录</a>
+            </div>
+            <div class="hide">
+                <a href="/user/upload"></a> | 
+                <a href="">退出</a>
+            </div>
+        </div>
+    </header>
+    <div id="main">
+            {% for item in data %}
+            <div id="one_friend">
+                <div id="head_picture">
+                    <img src="{{ item.friend_head }}" alt="">
+                </div>
+                <span id="friend_name">{{ item.friend_name }}</span>
+                {% if item.friend_gender == '0' %}
+                <span id="friend_gender">女生</span>
+                {% elif item.friend_gender == '1' %}
+                <span id="friend_gender">男生</span>
+                {% endif %}
+                <div id="op">
+                    <button class="ignore">忽  略</button>
+                    <button class="agree">同  意</button>
+                </div>
+            </div>
+            {% empty %}
+            <div id="no_friend">没有新的好友请求呢~</div>
+            {% endfor %}
+        
+    </div>
+    <footer></footer>
+    <script src="/static/js/jquery-3.1.1.min.js"></script>
+    <script src="/static/js/newfriends.js"></script>
+</body>
+</html>

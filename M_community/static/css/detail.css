@@ -1,0 +1,187 @@
+/* 全局样式 */
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    font-family: 'YouYuan';
+    background-color: #f1f3f4;
+}
+ul,li,p,h1,h2,h3{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+}
+a,a:hover{
+    text-decoration: none;
+
+}
+input{
+    border: none;
+    outline: none;
+}
+.clear{
+    clear: both;
+}
+
+/* 头部样式 */
+header{
+    width: 1050px;
+    height: 190px;
+    margin: 0 auto;
+    position: relative;
+    /* border: 1px solid #666; */
+}
+header #logo{
+    width: 160px;
+    height: 90px;
+    position: absolute;
+    top: 30px;
+}
+header #logo a img{
+    width: 160px;
+    height: 90px;
+}
+
+/* 主体样式 */
+#main{
+    position: relative;
+    width: 1050px;
+    height: 1000px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border: 1px solid #666;
+    border-radius: 10px;
+}
+#main #title{
+    width: 420px;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 900;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#main #author{
+    width: 210px;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+    top: 21px;
+    font-size: 24px;
+    font-weight: 900;
+}
+#main #essay_classify{
+    width: 100px;
+    position: absolute;
+    font-size: 16px;
+    right: 70px;
+    top: 66px;
+    text-align: center;
+    border: 1px solid #888;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border-radius: 3px;
+}
+#main #main_box{
+    width: 600px;
+    height: 850px;
+    /* border: 1px solid #666; */
+    position: absolute;
+    left: 20px;
+    top: 120px;
+}
+#main #main_box #content{
+    position: absolute;
+    width: 600px;
+    left: 10px;
+    top: 270px;
+    font-size: 18px;
+}
+#main #main_box #picture{
+    position: absolute;
+    left: 225px;
+    top: 20px;
+}
+#main #main_box #picture img{
+    width: 300px;
+    
+}
+
+/* 评论区样式 */
+#main #comment{
+    width: 370px;
+    height: 850px;
+    position: absolute;
+    right: 20px;
+    top: 120px;
+    border: 1px solid #666;
+    border-radius: 5px;
+}
+#main #comment #tips{
+    width: 80px;
+    font-size: 15px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border-radius: 3px;
+    position: absolute;
+    left: 6px;
+    top: 6px;
+}
+#main #comment #comment_show{
+    width: 365px;
+    height: 785px;
+    position: absolute;
+    /* border: 1px solid #666; */
+    top: 50px;
+    left: 3px;
+}
+#comment_show .other_comment{
+    width: 355px;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #666;
+    margin: 0 auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding-left: 5px;
+    font-size:15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* 我发表评论的区域 */
+#main #comment #user_input{
+    width: 360px;
+    height: 30px;
+    border: 1px solid #666;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+    border-radius: 5px;
+    
+}
+#main #comment #my_comment{
+    width: 280px;
+    height: 26px;
+    margin-left: 5px;
+    border-radius: 3px;
+    padding-left: 5px;
+}
+#main #comment #user_input #comment_btn{
+    width: 60px;
+    height: 26px;
+    line-height: 26px;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#main #comment #user_input #comment_btn:active{
+    background-color: rgba(0, 0, 0, 0.4);
+}
