@@ -59,9 +59,6 @@ def post_essay(request):
         title = r.hget(username,'title').decode()
         classify = r.hget(username,'classify').decode()
         content = r.hget(username,'content').decode()
-        '/static/files/A_YEON/梁博_测试_1.jpg'
-        '/static/files/A_YEON/梁博_测试_1.jpg'
-        '/home/lishuo/桌面/soul lee/M_community/static/files/A_YEON/梁博_测试_1.jpg'
         image_url = filename.strip()[36:]
         essay = Essay.objects.create(title=title,classify=classify,content=content,image=image_url,author=user)
         r.delete(username)

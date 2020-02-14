@@ -228,6 +228,7 @@ header #tools .hide{
 #content .essay_show #essay_image{
     position: absolute;
     width: 200px;
+    height: 150px;
     top: 40px;
     left: 12px;
     border-radius: 5px;
