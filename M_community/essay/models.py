@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 # Create your models here.
@@ -8,8 +9,9 @@ class Essay(models.Model):
     title = models.CharField(max_length=100,verbose_name='标题')
     classify = models.CharField(max_length=1,verbose_name='话题')
     content = models.CharField(max_length=500,verbose_name='描述')
-    image = models.ImageField(verbose_name='附图')
+    image = models.ImageField(verbose_name='封面')
     author = models.ForeignKey(User,verbose_name='作者')
+    video = models.CharField(max_length=100,verbose_name='视频URL',default='')
     create_time = models.DateTimeField(auto_now_add=True,verbose_name='创建时间')
     update_time = models.DateTimeField(auto_now=True,verbose_name='更新时间')
     is_active = models.BooleanField(default=True)

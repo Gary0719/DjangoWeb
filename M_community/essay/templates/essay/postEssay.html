@@ -28,9 +28,20 @@
             </select>
         </div>
         <div id="content">
-            <img src="" id="show">
-            <input type="file" accept="image/png,image/jpeg,image/jpg" name="essayPicture" id="essayPicture" class="myessay">
-            <textarea name="content_text" class="myessay" id="content_text" cols="60" rows="15"></textarea>
+            <div id="pic">
+                <input type="file" accept="image/png,image/jpeg,image/jpg" name="essayPicture" id="essayPicture" class="myessay">
+                <span>选择封面:</span>
+                <div id="plus_1">+</div>
+            </div>
+            <textarea name="content_text" id="content_text" cols="50" rows="6"></textarea>
+        </div>
+
+        <div id="video_content">
+            <span>视频上传:</span>
+            <div id="video_show">
+                <input type="file" accept="video/*" id="upload_video">
+                <div id="plus">+</div>
+            </div>
         </div>
         <button id="send">发表</button>
     </div>
