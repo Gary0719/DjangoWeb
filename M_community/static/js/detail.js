@@ -16,8 +16,6 @@ $(function(){
             dataType:'json',
             success:function(res){
                 if (res.code == 200){
-                    console.log(res.data.username);
-                    console.log(res.data.comment);
                     var user_comment = $('<div></div>').css({'width': '285px',
                                                              'height': '35px',
                                                              'border':'1px solid #666',

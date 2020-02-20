@@ -94,24 +94,32 @@ header #logo a img{
 }
 #main #main_box #content{
     position: absolute;
-    width: 600px;
+    width: 520px;
     left: 10px;
-    top: 270px;
+    top: 630px;
     font-size: 18px;
 }
 #main #main_box #picture{
     position: absolute;
-    left: 225px;
-    top: 20px;
+    left: 100px;
 }
 #main #main_box #picture img{
-    width: 300px;
+    width: 400px;
+    height: 300px;
     
 }
 
+#the_video{
+    position: absolute;
+    left: 100px;
+    top: 310px;
+    z-index: 20;
+}
+
+
 /* 评论区样式 */
 #main #comment{
-    width: 370px;
+    width: 450px;
     height: 850px;
     position: absolute;
     right: 20px;
@@ -139,7 +147,7 @@ header #logo a img{
     left: 3px;
 }
 #comment_show .other_comment{
-    width: 355px;
+    width: 435px;
     height: 35px;
     line-height: 35px;
     border: 1px solid #666;
@@ -154,7 +162,7 @@ header #logo a img{
 
 /* 我发表评论的区域 */
 #main #comment #user_input{
-    width: 360px;
+    width: 440px;
     height: 30px;
     border: 1px solid #666;
     margin: 0 auto;
@@ -165,7 +173,7 @@ header #logo a img{
     
 }
 #main #comment #my_comment{
-    width: 280px;
+    width: 360px;
     height: 26px;
     margin-left: 5px;
     border-radius: 3px;

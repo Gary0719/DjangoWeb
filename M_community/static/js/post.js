@@ -152,6 +152,7 @@ $(function(){
                     success:function(res){
                         if(res.code == 200){
                             alert(res.data);
+                            location.href = '/index/';
                         }else{
                             alert(res.data);
                         }

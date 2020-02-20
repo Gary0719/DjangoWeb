@@ -40,6 +40,9 @@
             <div id="picture">
                 <img src="{{ essay.image }}" alt="">
             </div>
+            <div id="the_video">
+                <video src="{{essay.video}}" width="400px" height="300px" style="outline: none" controls="controls"></video>
+            </div>
         </div>
         <div id="author">
             作者:{{ user.username }}
@@ -51,7 +54,7 @@
                 <div class="other_comment">{{ comment.observer.username }} : {{ comment.comment }}</div>
                 {% endfor %}
                 <div id="user_input">
-                    <input type="text" name="my_comment" id="my_comment" maxlength="18" placeholder="请输入18个字符以内的评论">
+                    <input type="text" name="my_comment" id="my_comment" maxlength="25" placeholder="请输入25个字符以内的评论">
                     <button id="comment_btn">发送</button>
                 </div>
             </div>

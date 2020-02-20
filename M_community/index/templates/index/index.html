@@ -27,28 +27,28 @@
         </div>
         <div id="navigation">
             <div class="sort">
-                <a href="">推荐</a>
+                <a href="/index?classify=hot">推荐</a>
             </div>
             <div class="sort">
-                <a href="">音乐</a>
+                <a href="/index?classify=music">音乐</a>
             </div>
             <div class="sort">
-                <a href="#">电影</a>
+                <a href="/index?classify=film">电影</a>
             </div>
             <div class="sort">
-                <a href="#">电视剧</a>
+                <a href="/index?classify=tv">电视剧</a>
             </div>
             <div class="sort">
-                <a href="#">宠物</a>
+                <a href="/index?classify=pet">宠物</a>
             </div>
             <div class="sort">
-                <a href="#">游戏</a>
+                <a href="/index?classify=game">游戏</a>
             </div>
             <div class="sort">
-                <a href="#">阅读</a>
+                <a href="/index?classify=read">文学</a>
             </div>
             <div class="sort">
-                <a href="#">旅游</a>
+                <a href="/index?classify=travel">旅游</a>
             </div>
         </div>
     </header>
@@ -136,7 +136,20 @@
             {% endfor %}
         </div>          
     </div>
-    <footer></footer>
+    <footer>
+        <div id="page">
+            {% if the_page.number <= 3 %}
+                {% for i in paginator.page_range %}    
+                    {%if the_page.number == i %}
+                    <span>{{ the_page.number }}</span>
+                    {% else %}
+                    <a href="/index?classify={{ classify }}&page={{ i }}">{{i}}</a>
+                    {% endif %}
+                {% endfor %}
+                
+            {% endif %}
+        </div>
+    </footer>
     <script src="/static/js/jquery-3.1.1.min.js"></script>
     <script src="/static/js/index.js"></script>
 </body>
