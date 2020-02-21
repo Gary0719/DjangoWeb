@@ -263,7 +263,7 @@ def upload_views(request):
             f.write(data)
         # print(filename[36:])
         # /static/files/Gary/头像_2.jpg
-        head_portrait = filename[36:]
+        head_portrait =  '/static/files/' + username + '/' + user_file.name
         user.head_portrait = head_portrait
         user.save()
         return JsonResponse({'code':200,'data':('头像更新成功',head_portrait)})

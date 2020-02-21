@@ -111,3 +111,27 @@ def comment_view(request):
         new_comment = Comment.objects.create(comment=comment,the_essay_id=essay_id,observer=user)
         data = {'username':username,'comment':comment}
         return JsonResponse({'code': 200, 'data': data})
+
+
+def essay_list_views(request):
+    if request.method == 'GET':
+        return render(request, 'essay/essay_list.html')
+
+
+def essay_data_views(request):
+    username = check_login(request)
+    if username:
+        user = User.objects.get(username=username)
+        essay_list = Essay.objects.filter(author=user)
+        data = []
+        for essay in essay_list:
+            one_essay = {}
+            one_essay['essay_id'] = essay.id
+            one_essay['classify'] = essay.classify
+            one_essay['click_rate'] = essay.click_rate
+            one_essay['create_time'] = essay.create_time
+            one_essay['image'] = str(essay.image)
+            data.append(one_essay)
+        return JsonResponse({'code': 200, 'data': data})
+    else:
+        return JsonResponse({'code': 220, 'data': '当前未登录!!'})

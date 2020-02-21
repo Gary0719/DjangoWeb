@@ -10,4 +10,11 @@ urlpatterns = [
 
     # 127.0.0.1:8000/essay/comment
     url(r'^comment$',views.comment_view),
+
+    url(r'^essay_list$',views.essay_list_views),
+
+
+    url(r'^essay_data$',views.essay_data_views),
+
+
 ]

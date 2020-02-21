@@ -180,6 +180,7 @@ header #tools .hide{
     height: 1110px;
     margin: 0 auto;
     border: 1px solid #666;
+    border-radius: 8px;
     margin-top: 20px;
     margin-bottom: 20px;
     position: relative;
@@ -247,10 +248,11 @@ header #tools .hide{
 footer #page{
     width: 600px;
     height: 20px;
-    font-size: 18px;
+    font-size: 16px;
     margin: 0 auto;
     text-align: center;
-    margin-bottom: 20px;
+    line-height: 20px;
+    margin-bottom: 30px;
 }
 footer #page span{
     color:#666;

@@ -61,7 +61,7 @@
                         <a href="/essay/post">发表日记</a>
                     </div>
                     <div>
-                        <a href="">所有日记</a>
+                        <a href="/essay/essay_list">所有日记</a>
                     </div>
                     <div>
                         <a href="">删除日记</a>
@@ -138,16 +138,26 @@
     </div>
     <footer>
         <div id="page">
-            {% if the_page.number <= 3 %}
-                {% for i in paginator.page_range %}    
-                    {%if the_page.number == i %}
-                    <span>{{ the_page.number }}</span>
-                    {% else %}
-                    <a href="/index?classify={{ classify }}&page={{ i }}">{{i}}</a>
-                    {% endif %}
-                {% endfor %}
-                
+            <!-- 上一页: -->
+            {% if the_page.has_previous %}
+            <a href="/index?classify={{ classify }}&page={{ the_page.previous_page_number  }}">上一页</a>
+            {% else %}
+            <span>上一页</span>
             {% endif %}
+
+            <!-- 本页: -->
+            <span>{{ the_page.number }}</span>
+
+            <!-- 下一页: -->
+            {% if the_page.has_next %}
+            <a href="/index?classify={{ classify }}&page={{ the_page.next_page_number  }}">下一页</a>
+            {% else %}
+            <span>下一页</span>
+            {% endif %}
+
+            <!-- 返回首页: -->
+            <a href="/index/">返回首页</a>
+            
         </div>
     </footer>
     <script src="/static/js/jquery-3.1.1.min.js"></script>
