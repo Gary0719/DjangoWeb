@@ -1,3 +1,4 @@
+
 $(function(){
     var username = window.localStorage.getItem('community_user');
     var head_portrait = window.localStorage.getItem('head_portrait');

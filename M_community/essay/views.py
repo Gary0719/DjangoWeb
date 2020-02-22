@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from community_token.views import check_login
-from essay.models import Essay, Comment
+from essay.models import Essay, Comment, FileReference
 from user.models import User
 # Create your views here.
 from django.views.generic.base import View
@@ -64,17 +64,36 @@ def post_essay(request):
                 with open(file_name_2,'wb') as f:
                     data = video_file.file.read()
                     f.write(data)
+                image_url = '/static/files/' + user.username + '/' + image_file.name
+                video_url = '/static/files/' + user.username + '/' + video_file.name
                 essay = Essay.objects.create(
                     title=title,
                     classify=select,
                     content=text,
-                    image='/static/files/' + user.username + '/' + image_file.name,
-                    video='/static/files/' + user.username + '/' + video_file.name,
+                    image=image_url,
+                    video=video_url,
                     author=user
                 )
-                # image, video 保存路径:
-                # /static/files/Jingtian/IMG_20200218_093400.jpg
-                # /static/files/Jingtian/6155d4730f0dfd933773ad289d56f9fd.mp4
+
+                # 查看该图片之前是否被引用过
+                files_1 = FileReference.objects.filter(file_url=image_url)
+                # 如果有, 对该图片的引用计数进行+1
+                if files_1:
+                    files_1[0].reference_number += 1
+                    files_1[0].save()
+                # 如果没有, 则为该图片创建引用计数对象, 并赋初始值=1
+                else:
+                    FileReference.objects.create(file_url=image_url,reference_number=1)
+
+                # 查看该视频之前是否被引用过
+                files_2 = FileReference.objects.filter(file_url=video_url)
+                # 如果有, 对该视频的引用计数进行+1
+                if files_2:
+                    files_2[0].reference_number += 1
+                    files_2[0].save()
+                else:
+                    # 如果没有, 则为该视频创建引用计数对象, 并赋初始值=1
+                    FileReference.objects.create(file_url=video_url, reference_number=1)
                 return JsonResponse({'code': 200, 'data': '发表成功!'})
             else:
                 return JsonResponse({'code': 220, 'data': '当前未登录!!'})
@@ -86,7 +105,7 @@ def post_essay(request):
 
 
 def get_detail(request,username,essay_id):
-    Essay.objects.filter(id=essay_id).update(click_rate=F('click_rate')+1)
+    Essay.objects.filter(id=essay_id, is_active=True).update(click_rate=F('click_rate')+1)
     essay = Essay.objects.get(id=essay_id)
     user = User.objects.get(username=username)
     comments = Comment.objects.filter(id__lte=15,the_essay=essay)
@@ -122,12 +141,26 @@ def essay_data_views(request):
     username = check_login(request)
     if username:
         user = User.objects.get(username=username)
-        essay_list = Essay.objects.filter(author=user)
+        essay_list = Essay.objects.filter(author=user, is_active=True)
         data = []
         for essay in essay_list:
             one_essay = {}
             one_essay['essay_id'] = essay.id
-            one_essay['classify'] = essay.classify
+            one_essay['essay_title'] = essay.title
+            if essay.classify == '0':
+                one_essay['classify'] = '音乐'
+            elif essay.classify == '1':
+                one_essay['classify'] = '电影'
+            elif essay.classify == '2':
+                one_essay['classify'] = '电视剧'
+            elif essay.classify == '3':
+                one_essay['classify'] = '宠物'
+            elif essay.classify == '4':
+                one_essay['classify'] = '游戏'
+            elif essay.classify == '5':
+                one_essay['classify'] = '文学'
+            elif essay.classify == '6':
+                one_essay['classify'] = '旅游'
             one_essay['click_rate'] = essay.click_rate
             one_essay['create_time'] = essay.create_time
             one_essay['image'] = str(essay.image)
@@ -135,3 +168,50 @@ def essay_data_views(request):
         return JsonResponse({'code': 200, 'data': data})
     else:
         return JsonResponse({'code': 220, 'data': '当前未登录!!'})
+
+
+def delete_essay_views(request):
+    if request.method == 'POST':
+        username = check_login(request)
+        if username:
+            data = json.loads(request.body)
+            essay_id = data.get('essay_id')
+            essay = Essay.objects.get(id=essay_id)
+            image_url = str(essay.image)
+            video_url = essay.video
+            file_1 = FileReference.objects.get(file_url=image_url)
+            file_2 = FileReference.objects.get(file_url=video_url)
+            # 如果两个文件的引用计数都为1, 则可以将两个文件删除, 该文章对象删除, 两个引用计数对象删除
+            if file_1.reference_number == 1 and file_2.reference_number == 1:
+                os.remove(settings.BASE_DIR + image_url)
+                os.remove(settings.BASE_DIR + video_url)
+                essay.delete()
+                file_1.delete()
+                file_2.delete()
+            # 如果两个文件的引用计数都不为1, 则将两个文件的引用计数-1, 对该文章对象做伪删除
+            elif file_1.reference_number != 1 and file_2.reference_number != 1:
+                essay.is_active = False
+                file_1.reference_number -= 1
+                file_2.reference_number -= 1
+                essay.save()
+                file_1.save()
+                file_2.save()
+            # 如果图片的引用计数为1, 视频不为1, 则将图片删除, 图片的引用计数对象删除; 视频的引用计数-1, 对该文章对象做伪删除
+            elif file_1.reference_number == 1 and file_2.reference_number != 1:
+                os.remove(settings.BASE_DIR + image_url)
+                file_1.delete()
+                essay.is_active = False
+                file_2.reference_number -= 1
+                essay.save()
+                file_2.save()
+            # 如果图片的引用计数不为1, 视频为1, 则将视频文件删除, 视频的引用计数对象删除, 图片的引用计数-1, 对该文章做伪删除
+            elif file_1.reference_number != 1 and file_2.reference_number == 1:
+                os.remove(settings.BASE_DIR + video_url)
+                file_2.delete()
+                essay.is_active = False
+                file_1.reference_number -= 1
+                essay.save()
+                file_1.save()
+            return JsonResponse({'code': 200, 'data': '该文章已删除!'})
+        else:
+            return JsonResponse({'code': 220, 'data': '当前未登录!!'})

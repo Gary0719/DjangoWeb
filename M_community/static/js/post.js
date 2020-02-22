@@ -162,56 +162,5 @@ $(function(){
         }else{
             alert('您当前为登录!');
         }
-        
-        // $.ajax({
-        //     url:'/essay/post',
-        //     type:'put',
-        //     contentType:'application/json;charset:utf-8',
-        //     data:JSON.stringify({
-        //         'title':$('#essayTitle').val(),
-        //         'classify':$('#classify').val(),
-        //         'content_text':$('#content_text').val(),
-        //         }),
-        //     dataType:'json',
-        //     beforeSend: function(request) {
-        //         request.setRequestHeader("Authorization", token);
-        //     },
-        //     success: function(res) {
-        //         if (res.code == 200) {
-        //             $.ajax({
-        //                 processData: false,
-        //                 contentType: false,
-        //                 url: '/essay/post',
-        //                 type: 'post',
-        //                 data: formdata,
-        //                 dataType:'json',
-                        // beforeSend: function(request) {
-                        //     request.setRequestHeader("Authorization", token);
-                        // },
-        //                 success: function(res) {
-        //                     if (res.code == 200) {
-        //                         alert('成功！')
-        //                         location.href = '/index';
-        //                     }else if(res.code == 224){
-        //                         alert(res.data);
-        //                     }
-        //                 }
-        //             });
-        //         }else if(res.code == 219){
-        //             alert('当前未登录');
-        //             location.href == '/user/login'
-        //         }else if(res.code == 220){
-        //             alert('当前未登录');
-        //             location.href == '/user/login'
-        //         }else if(res.code == 221){
-        //             alert(res.data);
-        //         }else if(res.code == 222){
-        //             alert(res.data);
-        //         }else if(res.code == 223){
-        //             alert(res.data);
-        //         }
-        //     },
-        // })
-        
     })
 }) 
