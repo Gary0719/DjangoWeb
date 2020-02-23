@@ -18,5 +18,14 @@ urlpatterns = [
     # /essay/delete
     url(r'^delete$', views.delete_essay_views),
 
+    # /essay/myfavourite
+    url(r'^myfavourite$',views.my_favourite_views),
+
+    # /essay/myfavourite_list
+    url(r'^myfavourite_list$',views.my_favourite__list_views),
+
+    # /essay/my_favourite_data
+    url(r'^my_favourite_data$',views.my_favourite__data_views),
+
 
 ]

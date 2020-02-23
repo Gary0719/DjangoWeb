@@ -11,9 +11,10 @@ window.onload=function(){
                 window.localStorage.clear();
                 localStorage.setItem('community_user',res.data.username);
                 localStorage.setItem('community_token',res.data.token);
+                localStorage.setItem('head_portrait',res.data.head);
                 setTimeout(()=>{
                     window.location.href="/index/";
-                },3000)
+                },500)
             }else if(res.code == 225){
                 // 跳转页面,实现本网站与微博账号的绑定
                 access_token = res.access_token

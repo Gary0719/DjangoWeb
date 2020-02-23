@@ -33,9 +33,12 @@
         {% elif essay.classify == '6' %}
         <div id="essay_classify">分类:旅游</div>
         {% endif %}
+
+        <button id="myfavourite">收藏</button>
+
         <div id="main_box">
             <div id="content">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ essay.content }}
+                {{ essay.content }}
             </div>
             <div id="picture">
                 <img src="{{ essay.image }}" alt="">

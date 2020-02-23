@@ -13,9 +13,12 @@ $(function(){
                 if(res.code==200){
                     alert('账号绑定成功!')
                     window.localStorage.clear();
+                    location.href='/index/';
                     localStorage.setItem('community_user',res.data.username);
                     localStorage.setItem('community_token',res.data.token);
-                    location.href='/index/';
+                    localStorage.setItem('head_portrait',res.data.head);
+                }else{
+                    alert(res.data);
                 }
             }
         })

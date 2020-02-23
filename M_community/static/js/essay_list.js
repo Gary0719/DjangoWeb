@@ -135,7 +135,33 @@ $(function(){
                         location.reload();
                     })
                 }
-                
+                if (res.data.length == 0){
+                    reminder = $('<div id="reminder"></div>').css({
+                        "background-image": "url('/static/image/none.jpg')",
+                        "width": '480px',
+                        'height': '270px',
+                        'background-size': 'cover',
+                        'margin': '0 auto',
+                        'position': 'relative',
+                        'opacity': '0.8',
+                        'border-radius': '10px',
+                    });
+                    text = $('<span>您还没有发布文章呢~</span>').css({
+                        'display': 'inline-block',
+                        "width": '220px',
+                        'height': '27px',
+                        'font-size': '18px',
+                        'font-weight': '900',
+                        'text-align': 'center',
+                        'opacity': '1',
+                        'color': '#fff',
+                        'position': 'absolute',
+                        'left': '130px',
+                        'top': '120px',
+                    });
+                    reminder.append(text);
+                    main.append(reminder);
+                }
             }else{
                 alert(res.data);
 

@@ -1,0 +1,21 @@
+#main{
+    width: 1050px;
+    min-height: 500px;
+    margin: 0 auto;
+    /* border: 1px solid #666; */
+    margin-bottom: 20px;
+    position: relative;
+    top: -20px;
+}
+
+header #outline{
+    text-align: center;
+    display: inline-block;
+    width: 150px;
+    font-size: 20px;
+    font-weight: 900;
+    position: relative;
+    left: 450px;
+    top: 70px;
+    
+}

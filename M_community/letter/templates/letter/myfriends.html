@@ -40,6 +40,10 @@
             <button class="chat">私聊</button>
             <!-- <button class="note">修改备注</button> -->
         </div>
+        {% empty %}
+        <div id="nofriends">
+            <span>您还没有好友嗷~_~</span>
+        </div>
         {% endfor %}
     </div>
     <footer></footer>

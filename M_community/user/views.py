@@ -70,7 +70,7 @@ def register_view(request):
         md.update(password_1.encode())
         password = md.hexdigest()   # 定长输出 32位
         try:
-            user = User.objects.create(username=username,password=password,gender=gender,email=email)
+            user = User.objects.create(username=username,password=password,gender=gender,email=email, head_portrait='/static/image/default_head.jpg')
         except Exception:
             return JsonResponse({'code':209,'data':'该用户名已被占用'})
         print('注册成功')
@@ -79,7 +79,7 @@ def register_view(request):
         # 需要在终端执行 celery - A M_community worker - -loglevel = info 此命令,启动celery ! ! ! ! ! !
         # 连按两次 Ctrl+C 退出
         token = make_token(username)    # 造token
-        return JsonResponse({'code':200,'data':{'username':username,'token':token.decode()}})
+        return JsonResponse({'code':200,'data':{'username':username, 'head':str(user.head_portrait),'token':token.decode()}})
 
 
 def email_view(request):
@@ -181,7 +181,7 @@ class WeiBo(View):
         code = request.GET.get('code')
         # 执行函数,后端最终向第三方获取access_token
         result = get_access_token(code)
-        print(result)
+        # print(result)
         # {'access_token': '2.00w2kyAI0mFb3g5eb13671401XRPBC', 'remind_in': '157679999', 'expires_in': 157679999, 'uid': '7343540520', 'isRealName': 'true'}
         wuid = result.get('uid')
         access_token = result.get('access_token')
@@ -198,8 +198,11 @@ class WeiBo(View):
             if uid:
                 # 之前已经绑定注册过我们网站的用户
                 username = uid.username
+                user = User.objects.get(username=username)
                 token = make_token(username)
-                return JsonResponse({'code': 200, 'data':{'username': username, 'token': token.decode()}})
+                # print(username)
+                # print(str(user.head_portrait))
+                return JsonResponse({'code': 200, 'data':{'username': username, 'head': str(user.head_portrait), 'token': token.decode()}})
             else:
                 # 之前用过当前微博账号登陆过,但没有完成后续的绑定注册流程
                 result = {'code': 224, 'uid': wuid}
@@ -210,11 +213,16 @@ class WeiBo(View):
         data = json.loads(request.body)
         username = data.get('username')
         password = data.get('password')
+        if not username:
+            return JsonResponse({'code': 291, 'data': '用户名不能为空!'})
+        if not password:
+            return JsonResponse({'code': 292, 'data': '密码不能为空!'})
         wuid = data.get('wuid')
-        print(username,password,wuid)
         md = hashlib.md5()
         md.update(password.encode())
         password_md = md.hexdigest()
+        print(username)
+        print(password)
         # 当有多条数据需要更新时 要考虑是否使用事务
         try:
             with transaction.atomic():
@@ -223,10 +231,14 @@ class WeiBo(View):
                     weibo_user = WeiboUser.objects.get(wuid=wuid)
                     weibo_user.uid = user
                     weibo_user.save()
+                    token = make_token(username)  # 进行到此处说明用户已完成注册,可以登录,签发token传至前端
+                    return JsonResponse({'code': 200, 'data': {'username': username, 'head': str(user.head_portrait), 'token': token.decode()}})
+                else:
+                    return JsonResponse({'code': 293, 'data': '用户名或密码错误!'})
         except Exception as e:
             print(e)
-        token = make_token(username)  # 进行到此处说明用户已完成注册,可以登录,签发token传至前端
-        return JsonResponse({'code': 200, 'data': {'username': username, 'token': token.decode()}})
+            return JsonResponse({'code': 294, 'data': '登录失败, 请重试!'})
+
 
 
 def callback(request):
@@ -261,7 +273,6 @@ def upload_views(request):
         with open(filename, 'wb') as f:
             data = user_file.file.read()
             f.write(data)
-        # print(filename[36:])
         # /static/files/Gary/头像_2.jpg
         head_portrait =  '/static/files/' + username + '/' + user_file.name
         user.head_portrait = head_portrait

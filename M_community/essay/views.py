@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from community_token.views import check_login
-from essay.models import Essay, Comment, FileReference
+from essay.models import Essay, Comment, FileReference, MyFavourite
 from user.models import User
 # Create your views here.
 from django.views.generic.base import View
@@ -213,5 +213,100 @@ def delete_essay_views(request):
                 essay.save()
                 file_1.save()
             return JsonResponse({'code': 200, 'data': '该文章已删除!'})
+        else:
+            return JsonResponse({'code': 220, 'data': '当前未登录!!'})
+
+
+def my_favourite_views(request):
+    if request.method == 'POST':
+        username = check_login(request)
+        if username:
+            data = json.loads(request.body)
+            essay_id = data.get('essay_id')
+            option = data.get('option')
+            print(essay_id, option)
+            try:
+                essay = Essay.objects.get(id=essay_id)
+                user = User.objects.get(username=username)
+                if option == '+':
+                    MyFavourite.objects.create(essay_id=essay_id,user_id=user.id)
+                    return JsonResponse({'code': 200, 'data': '已添加至收藏夹!'})
+                elif option == '-':
+                    my_favourite = MyFavourite.objects.get(essay_id=essay_id,user_id=user.id)
+                    my_favourite.delete()
+                    return JsonResponse({'code': 200, 'data': '已取消收藏'})
+            except Exception as e:
+                print(e)
+                return JsonResponse({'code': 221, 'data': '网络故障, 请稍后重试'})
+        else:
+            return JsonResponse({'code': 220, 'data': '当前未登录!!'})
+    elif request.method == 'GET':
+        # 加载详情页时, 获取当前用户是否收藏了当前文章
+        username = check_login(request)
+        if username:
+            essay_id = request.GET.get('essay_id')
+            user = User.objects.get(username=username)
+            try:
+                my_favourite = MyFavourite.objects.get(user_id=user.id,essay_id=essay_id)
+                return JsonResponse({'code': 200, 'data': '已收藏'})
+            except Exception as e:
+                return JsonResponse({'code': 222, 'data': '未收藏'})
+        else:
+            return JsonResponse({'code': 220, 'data': '当前未登录!!'})
+
+
+def my_favourite__list_views(request):
+    if request.method == 'GET':
+        return render(request,'essay/myfavourite.html')
+
+
+def judge_classify(classify):
+    if classify == '0':
+        return '音乐'
+    elif classify == '1':
+        return '电影'
+    elif classify == '2':
+        return '电视剧'
+    elif classify == '3':
+        return '宠物'
+    elif classify == '4':
+        return '游戏'
+    elif classify == '5':
+        return '文学'
+    elif classify == '6':
+        return '旅游'
+
+
+def judge_gender(gender):
+    if gender == '0':
+        return '女生'
+    elif gender == '1':
+        return '男生'
+
+
+def my_favourite__data_views(request):
+    if request.method == 'GET':
+        username = check_login(request)
+        if username:
+            user = User.objects.get(username=username)
+            my_favourite_list = MyFavourite.objects.filter(user_id=user.id)
+            favourite_list = []
+            for item in my_favourite_list:
+                essay_data = {}
+                essay_id = item.essay_id
+                essay = Essay.objects.get(id=essay_id)
+                essay_data['essay_id'] = essay.id
+                essay_data['title'] = essay.title
+                classify = judge_classify(essay.classify)
+                essay_data['classify'] = classify
+                essay_data['image'] = str(essay.image)
+                essay_data['click_rate'] = essay.click_rate
+                author = essay.author
+                essay_data['author_name'] = author.username
+                gender = judge_gender(author.gender)
+                essay_data['author_gender'] = gender
+                essay_data['author_head'] = str(author.head_portrait)
+                favourite_list.append(essay_data)
+            return JsonResponse({'code': 200, 'data': favourite_list})
         else:
             return JsonResponse({'code': 220, 'data': '当前未登录!!'})

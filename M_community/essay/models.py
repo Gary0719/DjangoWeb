@@ -43,5 +43,20 @@ class FileReference(models.Model):
     file_url = models.CharField(max_length=100,verbose_name='文件路径')
     reference_number = models.IntegerField(verbose_name='引用数')
 
+    class Meta:
+        db_table = 'reference'
+        verbose_name = '文件引用数'
+        verbose_name_plural = '文件引用数'
+
     def __str__(self):
-        return '%s  %d'%(self.file_url, self.reference_number)
+        return '%s  %s'%(self.file_url, self.reference_number)
+
+
+class MyFavourite(models.Model):
+    user_id = models.IntegerField(verbose_name='用户id')
+    essay_id = models.IntegerField(verbose_name='文章id')
+
+    class Meta:
+        db_table = 'myfavourite'
+        verbose_name = '收藏'
+        verbose_name_plural = '收藏'

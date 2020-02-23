@@ -16,8 +16,10 @@ $(function(){
                 if (res.code == 200){
                     user_name = res.data.username;
                     com_token = res.data.token;
+                    head_img = res.data.head;
                     localStorage.setItem('community_user',user_name);
                     localStorage.setItem('community_token',com_token);
+                    localStorage.setItem('head_portrait', head_img);
                     window.alert('激活邮件已发送至您的邮箱,请注意查收!');
                     location.href='/index';
                 }else if(res.code == 201){

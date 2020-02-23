@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/static/css/bind.css">
 </head>
 <body>
-    <div>
-        <label for="username">用户名:</label>
-        <input type="text" name="username" id="username">
+    <div id="main">
+        <img src="/static/image/logo.png" alt="">
+        <div id="user_name">
+            <label for="username">用户名:</label>
+            <input type="text" name="username" id="username" placeholder="绑定喵社区账号">
+        </div>
+        <div id="user_pass">
+            <label for="passwd">密码:</label>
+            <input type="password" name="passwd" id="passwd" placeholder="喵社区账号的密码">
+        </div>
+        <button id="sure">登录</button>
     </div>
-    <div>
-        <label for="passwd">密码:</label>
-        <input type="password" name="passwd" id="passwd">
-    </div>
-    <button id="sure">登录</button>
+    
     <script src="/static/js/jquery-3.1.1.min.js"></script>
     <script src="/static/js/bind.js"></script>
 </body>
