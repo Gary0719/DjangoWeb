@@ -105,19 +105,23 @@ def post_essay(request):
 
 
 def get_detail(request,username,essay_id):
-    Essay.objects.filter(id=essay_id, is_active=True).update(click_rate=F('click_rate')+1)
-    essay = Essay.objects.get(id=essay_id)
-    user = User.objects.get(username=username)
-    comments = Comment.objects.filter(id__lte=15,the_essay=essay)
-    # print(essay,user)
-    return render(request,'essay/detail.html',locals())
+    try:
+        Essay.objects.filter(id=essay_id, is_active=True).update(click_rate=F('click_rate')+1)
+        essay = Essay.objects.get(id=essay_id)
+        user = User.objects.get(username=username)
+        comments = Comment.objects.filter(id__lte=15,the_essay=essay)
+        # print(essay,user)
+        return render(request,'essay/detail.html',locals())
+    except Exception as e:
+        print(e)
+        return render(request, 'essay/essay404.html')
 
 
 def comment_view(request):
     if request.method == 'POST':
         token = request.META.get('HTTP_AUTHORIZATION')  # 获取请求头
         if not token:
-            return JsonResponse({'code': 219, 'data': '当前未登录!'})
+            return JsonResponse({'code': 220, 'data': '当前未登录!'})
         try:
             res = jwt.decode(token, key=settings.JWT_TOKEN_KEY, algorithms='HS256')
         except Exception as e:
@@ -294,19 +298,26 @@ def my_favourite__data_views(request):
             for item in my_favourite_list:
                 essay_data = {}
                 essay_id = item.essay_id
-                essay = Essay.objects.get(id=essay_id)
-                essay_data['essay_id'] = essay.id
-                essay_data['title'] = essay.title
-                classify = judge_classify(essay.classify)
-                essay_data['classify'] = classify
-                essay_data['image'] = str(essay.image)
-                essay_data['click_rate'] = essay.click_rate
-                author = essay.author
-                essay_data['author_name'] = author.username
-                gender = judge_gender(author.gender)
-                essay_data['author_gender'] = gender
-                essay_data['author_head'] = str(author.head_portrait)
-                favourite_list.append(essay_data)
+                print(essay_id)
+                try:
+                    essay = Essay.objects.get(id=essay_id)
+                    essay_data['essay_id'] = essay.id
+                    essay_data['title'] = essay.title
+                    classify = judge_classify(essay.classify)
+                    essay_data['classify'] = classify
+                    essay_data['image'] = str(essay.image)
+                    essay_data['click_rate'] = essay.click_rate
+                    author = essay.author
+                    essay_data['author_name'] = author.username
+                    gender = judge_gender(author.gender)
+                    essay_data['author_gender'] = gender
+                    essay_data['author_head'] = str(author.head_portrait)
+                    favourite_list.append(essay_data)
+                except Exception as e:
+                    print(e)
+                    print(essay_id, '删')
+                    item.delete()
+                    continue
             return JsonResponse({'code': 200, 'data': favourite_list})
         else:
             return JsonResponse({'code': 220, 'data': '当前未登录!!'})

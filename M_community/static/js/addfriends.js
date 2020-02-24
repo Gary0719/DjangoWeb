@@ -108,6 +108,7 @@ $(function(){
                                     location.reload();
                                 }else if(res.code == 220){
                                     alert(res.data);
+                                    location.href = '/user/login';
                                 }else if(res.code == 272){
                                     alert(res.data);
                                     location.reload();

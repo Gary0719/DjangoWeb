@@ -13,7 +13,7 @@ from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic.base import View
-from community_token.views import make_token
+from community_token.views import make_token, check_login
 from .tasks import send_active_email
 from .models import User, WeiboUser
 
@@ -278,3 +278,21 @@ def upload_views(request):
         user.head_portrait = head_portrait
         user.save()
         return JsonResponse({'code':200,'data':('头像更新成功',head_portrait)})
+
+
+def modify_views(request):
+    if request.method == 'GET':
+        return render(request, 'user/modify.html')
+
+
+# def modify_data_views(request):
+#     if request.method == 'GET':
+#         username = check_login(request)
+#         if username:
+#             user = User.objects.get(username=username)
+#             username = user.username
+#             gender = user.gender
+#             head = str(user.head_portrait)
+#             return JsonResponse({'code': 200, 'data': {'username': username, 'gender': gender, 'head': head}})
+#         else:
+#             return JsonResponse({'code': 220, 'data': '当前未登录!!'})

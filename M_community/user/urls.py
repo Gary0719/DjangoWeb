@@ -12,6 +12,7 @@ urlpatterns = [
 
     # 127.0.0.1:8000/user/weibo/authorization  获取微博授权登录页
     url(r'^weibo/authorization$',views.weibo_login),
+
     # 127.0.0.1:8000/user/callback
     url(r'^callback$',views.callback),
 
@@ -19,5 +20,9 @@ urlpatterns = [
 
     url(r'^bind$',views.bind),
 
-    url(r'^upload$',views.upload_views)
+    url(r'^upload$',views.upload_views),
+
+    # url(r'^modify$', views.modify_views),
+    #
+    # url(r'^modify_data$', views.modify_data_views),
 ]

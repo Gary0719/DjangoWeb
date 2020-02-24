@@ -158,7 +158,8 @@ $(function(){
                     reminder.prepend(content);
                     main.prepend(reminder);
                 }
-                
+            }else if (res.code == 281){
+                location.href = '/user/login';
             }
         }
     });

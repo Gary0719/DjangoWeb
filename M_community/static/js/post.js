@@ -161,6 +161,7 @@ $(function(){
             }
         }else{
             alert('您当前为登录!');
+            location.href = '/user/login';
         }
     })
 }) 

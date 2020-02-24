@@ -3,13 +3,31 @@
     height: 360px;
 }
 #sure{
-    bottom: 115px;
-
+    bottom: 140px;
+    left: 150px;
+    cursor: pointer;
+}
+#register{
+    width: 120px;
+    height: 30px;
+    position: absolute;
+    left: 150px;
+    bottom: 96px;
+    font-size: 15px;
+    background-color: #2ec47c;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+#register:active{
+    background-color: #2eb47c;
 }
 #weibo{
     position: absolute;
-    left: 205px;
-    bottom: 40px;
+    left: 190px;
+    bottom: 36px;
     
 }
 #weibo img{

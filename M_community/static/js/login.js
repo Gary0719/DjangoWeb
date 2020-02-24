@@ -27,6 +27,11 @@ $(function(){
             }
         })
     })
+
+    $("#register").click(function(){
+        location.href = '/user/register';
+    })
+
     $("#weibo img").click(function(){
         $.ajax({
             url:'/user/weibo/authorization',

@@ -66,7 +66,7 @@ header #tools{
     position: absolute;
     right: 25px;
     top: 95px;
-
+    
 }
 
 header #tools a{
@@ -88,10 +88,10 @@ header #tools .hide{
     width: 1050px;
     height: 360px;
     position: relative;
-    border:1px solid #666;
+    /* border:1px solid #666; */
     border-radius: 5px;
     margin: 0 auto;
-
+    
 }
 #slide #user{
     width: 90px;
@@ -167,6 +167,7 @@ header #tools .hide{
 #back_img .slide_img{
     width: 1050px;
     height: 360px;
+    border-radius: 10px;
     position: relative;
     /* transition: all 1s; */
 }

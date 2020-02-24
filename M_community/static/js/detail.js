@@ -33,14 +33,15 @@ $(function(){
             dataType:'json',
             success:function(res){
                 if (res.code == 200){
-                    var user_comment = $('<div></div>').css({'width': '285px',
+                    var user_comment = $('<div></div>').css({'width': '435px',
                                                              'height': '35px',
                                                              'border':'1px solid #666',
                                                              'margin': '0 auto',
                                                              'border-radius': '5px',
                                                              'margin-top': '10px',
                                                              'line-height': '35px',
-                                                             'padding-left': '5px'}).html(res.data.username+' : '+res.data.comment);
+                                                             'padding-left': '5px',
+                                                            'font-size': '15px'}).html(res.data.username+' : '+res.data.comment);
                     $('#user_input').before(user_comment);
                     $("#my_comment").val('');
                 }else if(res.code == 219){

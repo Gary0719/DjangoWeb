@@ -1,0 +1,14 @@
+#none{
+    width: 480px;
+    height: 270px;
+    margin: 0 auto;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 270px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+    background-image: url('/static/image/none.jpg');
+    background-size: cover;
+    opacity: 0.9;
+}

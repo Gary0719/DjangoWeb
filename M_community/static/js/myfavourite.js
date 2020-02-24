@@ -135,8 +135,8 @@ $(function(){
                 }
                 
             }else{
-                alert(res.data);
-                location.href = '/index';
+                // alert(res.data);
+                location.href = '/user/login';
             }
         }
     })

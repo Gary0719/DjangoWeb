@@ -162,6 +162,8 @@ $(function(){
                     reminder.append(text);
                     main.append(reminder);
                 }
+            }else if( res.code == 220){
+                location.href = '/user/login';
             }else{
                 alert(res.data);
 

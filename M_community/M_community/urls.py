@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^user/',include('user.urls')),
     url(r'^essay/',include('essay.urls')),
     url(r'^letter/',include('letter.urls')),
+    url(r'^',include('index.urls')),
 ]
