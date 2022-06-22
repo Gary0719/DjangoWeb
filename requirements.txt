@@ -8,7 +8,7 @@ ipaddress==1.0.17
 keyring==10.6.0
 keyrings.alt==3.0
 mercurial==4.5.3
-numpy==1.13.3
+numpy==1.22.0
 pycrypto==2.6.1
 pygame===1.9.1release
 pygobject==3.26.1
